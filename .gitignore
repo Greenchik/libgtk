@@ -1,0 +1,6 @@
+*.[oa]
+*.sw[op]
+libid/*.[oa]
+libid/*.sw[op]
+*.log
+.__afs*
