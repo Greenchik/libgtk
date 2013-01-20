@@ -94,4 +94,31 @@ void		get_default_button_args(t_button_arg* args, GtkWidget* parent,
 					t_parent_type type);
 GtkWidget*	get_new_button(t_button_arg* args);
 
+typedef struct	s_notebook_arg
+{
+	gboolean	not_show;
+	t_parent	not_parent;
+}	t_notebook_arg;
+
+void		get_default_notebook_args(t_notebook_arg* args,
+					  GtkWidget* parent,
+					  t_parent_type type);
+GtkWidget*	get_new_notebook(t_notebook_arg* args);
+
+typedef struct	s_textview_arg
+{
+	gboolean	tv_show;
+	gboolean	tv_editable;
+	gboolean	tv_cursor_visible;
+	GtkTextBuffer*	tv_buffer;
+	t_parent	tv_parent;
+}	t_textview_arg;
+
+void		get_default_textview_args(t_textview_arg* args,
+					  GtkWidget* parent,
+					  t_parent_type type);
+GtkWidget*	get_new_textview(t_textview_arg* args);
+GtkWidget*	get_new_textview_scrolled(t_textview_arg* args, GtkWidget** scroll);
+void		textview_append_text(GtkWidget* textview, char* line);
+
 #endif

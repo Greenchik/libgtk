@@ -42,5 +42,7 @@ GtkWidget*	get_new_window(t_window_arg* args)
 		g_signal_connect(window, "delete-event",
 				 G_CALLBACK(&args->win_delete_event_event),
 				 args->win_delete_event_data);
+	if (args->win_show == TRUE)
+		gtk_widget_show(window);
 	return (window);
 }

@@ -3,7 +3,9 @@ SRC	=	window.c		\
 		parent.c		\
 		connect_parent.c	\
 		box.c			\
-		button.c
+		button.c		\
+		notebook.c		\
+		textview.c
 OBJ	=	$(SRC:.c=.o)
 LDFLAGS	=	-L./libid/ -lid `pkg-config --libs gtk+-2.0`
 CC	=	gcc
