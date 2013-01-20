@@ -19,6 +19,7 @@ GtkWidget*	get_new_textview(t_textview_arg* args)
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(textview), args->tv_editable);
 	gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(textview),
 					 args->tv_editable);
+	connect_parent(&args->tv_parent, textview);
 	if (args->tv_show == TRUE)
 		gtk_widget_show(textview);
 	return (textview);
@@ -35,6 +36,7 @@ GtkWidget*	get_new_textview_scrolled(t_textview_arg* args, GtkWidget** scroll)
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(textview), args->tv_editable);
 	gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(textview),
 					 args->tv_editable);
+	connect_parent(&args->tv_parent, scroll_tmp);
 	if (args->tv_show == TRUE)
 	{
 		gtk_widget_show(scroll_tmp);

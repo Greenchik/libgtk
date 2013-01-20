@@ -121,4 +121,37 @@ GtkWidget*	get_new_textview(t_textview_arg* args);
 GtkWidget*	get_new_textview_scrolled(t_textview_arg* args, GtkWidget** scroll);
 void		textview_append_text(GtkWidget* textview, char* line);
 
+typedef void	callback_activate(GtkEntry* entry, gpointer data);
+
+typedef struct	s_entry_arg
+{
+	gboolean		ent_show;
+	t_parent		ent_parent;
+
+}	t_entry_arg;
+
+void		get_default_entry_args(t_entry_arg* args, GtkWidget* parent,
+				       t_parent_type type);
+GtkWidget*	get_new_entry(t_entry_arg* args);
+void		entry_connect_activate_signal(GtkWidget* entry,
+					      callback_activate* cb,
+					      void* data);
+
+
+typedef struct	s_chatarea
+{
+	t_box_arg		ca_box_args;
+	t_textview_arg		ca_tv_args;
+	t_entry_arg		ca_ent_args;
+	GtkWidget*		ca_vbox;
+	GtkWidget*		ca_entry;
+	GtkWidget*		ca_textarea;
+	GtkWidget*		ca_scroll;
+	t_parent		ca_parent;
+}	t_chatarea;
+
+void		init_simple_chatarea(t_chatarea* args, GtkWidget* parent,
+				     t_parent_type type);
+void		get_simple_chatarea(t_chatarea* args);
+
 #endif

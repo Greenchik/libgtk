@@ -5,7 +5,9 @@ SRC	=	window.c		\
 		box.c			\
 		button.c		\
 		notebook.c		\
-		textview.c
+		textview.c		\
+		entry.c			\
+		chatarea.c
 OBJ	=	$(SRC:.c=.o)
 LDFLAGS	=	-L./libid/ -lid `pkg-config --libs gtk+-2.0`
 CC	=	gcc
