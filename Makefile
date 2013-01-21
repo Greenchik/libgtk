@@ -13,11 +13,16 @@ all:	$(NAME)
 $(NAME):	$(OBJ) $(LIBGTK)
 	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
+$(LIBGTK):
+	make -C src/
+
 clean:
 	rm -f $(OBJ)
+	make -s -C src/ clean
 
 distclean:	clean
 	rm -f $(NAME)
+	make -s -C src/ distclean
 
 rebuild:	distclean all
 
