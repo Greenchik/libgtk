@@ -52,24 +52,13 @@ GtkWidget*	get_new_treeview_column(t_treeview_arg* args)
 	GtkWidget*		list;
 
 	list = gtk_tree_view_new();
+	set_args(GTK_TREE_VIEW(list), args);
 	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list), TRUE);
 	gtk_box_pack_start(GTK_BOX(args->trv_parent.par_parent), list, TRUE, TRUE, args->padding_in_box);
 	init_list(list, args);
 	if (args->trv_show != 0)
 		gtk_widget_show(list);
 	return (list);
-	/*GtkTreeViewColumn*	column;
-	GtkCellRenderer*	renderer;
-	GtkListStore*		store;
-
-	(void)args;
-	renderer = gtk_cell_renderer_text_new();
-	column = gtk_tree_view_new_with_attributes("List items", renderer, "text", 0, NULL);
-	store = gtk_list_store_new(1, G_TYPE_STRING);
-	gtk_tree_view_set_model(GTK_TREE_VIEW
-	return (treeview);*/
-	(void)args;
-	return (NULL);
 }
 
 void		treeview_append_row(GtkWidget* treeview, char* line,
