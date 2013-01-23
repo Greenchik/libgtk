@@ -4,10 +4,10 @@ void		get_default_textview_args(t_textview_arg* args,
 					  GtkWidget* parent,
 					  t_parent_type type)
 {
+	gtk_memset(args, 0, sizeof(*args));
 	args->tv_show = TRUE;
 	args->tv_editable = FALSE;
 	args->tv_cursor_visible = FALSE;
-	args->tv_buffer = NULL;
 	set_default_parent(&args->tv_parent, parent, type);
 }
 

@@ -4,6 +4,7 @@ void		get_default_box_args(t_box_arg* args,
 				     t_box_orientation orientation,
 				     GtkWidget* parent, t_parent_type type)
 {
+	gtk_memset(args, 0, sizeof(*args));
 	args->box_orientation = orientation;
 	args->box_homogeneous = FALSE;
 	args->box_spacing = 0;

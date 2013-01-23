@@ -7,11 +7,13 @@ SRC	=	window.c		\
 		notebook.c		\
 		textview.c		\
 		entry.c			\
-		chatarea.c
+		chatarea.c		\
+		treeview.c		\
+		my_gtk_fct.c
 OBJ	=	$(SRC:.c=.o)
-LDFLAGS	=	-L./libid/ -lid `pkg-config --libs gtk+-2.0`
+LDFLAGS	=	`pkg-config --libs gtk+-2.0`
 CC	=	gcc
-CFLAGS	=	-W -Wall -Werror `pkg-config --cflags gtk+-2.0` -g3
+CFLAGS	=	-W -Wall -Werror `pkg-config --cflags gtk+-2.0`
 AR	=	ar
 RANLIB	=	ranlib
 

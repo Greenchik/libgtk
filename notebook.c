@@ -4,6 +4,7 @@ void		get_default_notebook_args(t_notebook_arg* args,
 					  GtkWidget* parent,
 					  t_parent_type type)
 {
+	gtk_memset(args, 0, sizeof(*args));
 	args->not_show = TRUE;
 	set_default_parent(&args->not_parent, parent, type);
 }

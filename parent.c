@@ -3,6 +3,7 @@
 void	set_default_parent(t_parent* parent, GtkWidget* _parent,
 			   t_parent_type type)
 {
+	gtk_memset(parent, 0, sizeof(*parent));
 	parent->par_type = type;
 	parent->par_parent = _parent;
 	parent->par_expand = FALSE;
