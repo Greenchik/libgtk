@@ -6,6 +6,7 @@ typedef struct	s_treeview_arg
 	GtkListStore*	trv_data;
 	gboolean	trv_show;
 	t_parent	trv_parent;
+	int		padding_in_box;
 }	t_treeview_arg;
 
 void		get_default_treeview_args(t_treeview_arg* args,

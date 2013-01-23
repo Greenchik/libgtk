@@ -9,17 +9,15 @@ void		get_default_treeview_args(t_treeview_arg* args,
 	gtk_memset(args, 0, sizeof(*args));
 	args->trv_data = NULL;
 	args->trv_show = TRUE;
+	args->padding_in_box = 0;
 	set_default_parent(&args->trv_parent, parent, type);
 }
 
 static void	set_args(GtkTreeView* treeview, t_treeview_arg* args)
 {
-	if (args->trv_data)
-		gtk_tree_view_set_model(treeview,
-					GTK_TREE_MODEL(args->trv_data));
-	else
-		gtk_tree_view_set_model(treeview,
-					GTK_TREE_MODEL(gtk_list_store_new(1, G_TYPE_STRING)));
+	if (args->trv_data == NULL)
+		args->trv_data = gtk_list_store_new(1, G_TYPE_STRING);
+	gtk_tree_view_set_model(treeview, GTK_TREE_MODEL(args->trv_data));
 }
 
 GtkWidget*	get_new_treeview(t_treeview_arg* args)
@@ -34,8 +32,33 @@ GtkWidget*	get_new_treeview(t_treeview_arg* args)
 	return (treeview);
 }
 
+void		init_list(GtkWidget* list, t_treeview_arg* args)
+{
+	GtkCellRenderer*	renderer;
+	GtkTrwwViewColumn*	col;
+
+	renderer = gtk_cell_renderer_text_new();
+	col = gtk_tree_view_column_new_with_attributes("Players List",
+						       renderer, "text",
+						       0, NULL);
+	gtk_tree_view_append_column(GTK_TREE_VIEW(list), col);
+	gtk_trww_view_set_model(GTK_TRWW_VIEW(list),
+				GTK_TREE_MODEL(args->trv_data));
+	g_object_unref(args->trv_data);
+}
+
 GtkWidget*	get_new_treeview_column(t_treeview_arg* args)
 {
+	GtkWidget*		list;
+
+	list = gtk_tree_view_new();
+	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list), TRUE);
+	gtk_box_pack_start(GTK_BOX(args->trv_parent), list, TRUE, TRUE,
+			   args->padding_in_box);
+	init_list(list);
+	if (args->trv_show != 0)
+		gtk_widget_show(list);
+	return (list);
 	/*GtkTreeViewColumn*	column;
 	GtkCellRenderer*	renderer;
 	GtkListStore*		store;
